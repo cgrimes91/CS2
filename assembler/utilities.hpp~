@@ -1,0 +1,12 @@
+// Chris Grimes
+// cs23001
+// Free function hpp
+
+#include "stack.hpp"
+
+#ifndef UTILITIES_HPP
+#define UTILITIES_HPP
+
+void infix2postfix(std::istream&);
+
+#endif

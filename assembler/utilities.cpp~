@@ -1,0 +1,33 @@
+// Chris Grimes
+// cs23001
+// Free Function cpp
+
+#include "utilities.hpp"
+#include<iostream>
+#include<fstream>
+
+void infix2postfix(std::istream& file, std::ostream& out){
+  stack<String> result;
+  while(!file.eof()){
+    String test;
+    file>>test;
+    while((test!=";")&&(!file.eof())){
+      if(test==")"){
+        String right= result.pop();
+        String oper= result.pop();
+        String left= result.pop();
+        result.push(left+right+oper);
+      }
+      else if(test!="("){
+        result.push(test);
+        test="";
+      }
+      file>>test;
+    }
+    while(result.empty()==0){
+      std::out<<result.top();
+      result.pop();
+    }
+    std::out<<std::endl;
+  }
+}
